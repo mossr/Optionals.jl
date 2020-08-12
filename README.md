@@ -14,7 +14,22 @@ const Optional{T} = Union{T, Missing}
 ## Usage
 ```julia
 using Optionals
+```
 
+#### Example: Reassignment
+```julia
+let x::Optional{Int} = 10
+    x = missing # works!
+end
+```
+```julia
+let x::Int = 10
+    x = missing # errors!
+end
+```
+
+#### Example: `isthere`
+```julia
 function example(input::Optional{Int})
     if isthere(input)
         println("The input $input is not missing!")
